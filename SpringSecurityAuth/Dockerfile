@@ -5,15 +5,16 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
 # Copy Maven wrapper and pom files
-COPY SpringSecurityAuth/mvnw .
-COPY SpringSecurityAuth/pom.xml .
-COPY SpringSecurityAuth/.mvn .mvn
+# Copy Maven wrapper and config
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
 
 # Copy source code
-COPY SpringSecurityAuth/src ./src
+COPY src ./src
 
 # Make Maven wrapper executable
-RUN chmod +x ./mvnw
+RUN chmod +x mvnw
 
 # Build the Spring Boot app (skip tests)
 RUN ./mvnw clean package -DskipTests
