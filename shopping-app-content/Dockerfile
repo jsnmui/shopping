@@ -4,22 +4,22 @@ FROM eclipse-temurin:17-jdk
 # Set working directory
 WORKDIR /app
 
-# Copy Maven wrapper and pom files from the subfolder
-COPY shopping-app-content/mvnw .
-COPY shopping-app-content/pom.xml .
-COPY shopping-app-content/.mvn .mvn
-
-# Copy source code
-COPY shopping-app-content/src ./src
+# Copy Maven wrapper, config, and pom first (cache-safe)
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
 
 # Make Maven wrapper executable
-RUN chmod +x ./mvnw
+RUN chmod +x mvnw
 
-# Build the Spring Boot app (skip tests)
-RUN ./mvnw clean package -DskipTests
+# Copy the source code
+COPY src ./src
 
-# Expose Spring Boot default port
+# Force Maven to rebuild the JAR and show target contents
+RUN ./mvnw clean package -DskipTests && ls -l target/
+
+# Expose Spring Boot port
 EXPOSE 8080
 
-# Run the app
-CMD ["java", "-jar", "target/shopping-app-0.0.1-SNAPSHOT.jar"]
+# Run the JAR (wildcard works even if version changes)
+CMD ["sh", "-c", "java -jar target/*.jar"]
