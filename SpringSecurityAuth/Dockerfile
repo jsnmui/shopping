@@ -1,23 +1,25 @@
- # Use Eclipse Temurin OpenJDK 17
+# Use Eclipse Temurin OpenJDK 17
 FROM eclipse-temurin:17-jdk
 
 # Set working directory
 WORKDIR /app
 
-# Copy everything at once to avoid caching issues
-COPY . .
+# Copy Maven wrapper, config, and pom first (cache-safe)
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
 
 # Make Maven wrapper executable
 RUN chmod +x mvnw
 
-# Build the Spring Boot app (skip tests)
-RUN ./mvnw clean package -DskipTests
+# Copy the source code
+COPY src ./src
 
-# List contents of target to verify JAR
-RUN ls -l target/
+# Force Maven to rebuild the JAR and show target contents
+RUN ./mvnw clean package -DskipTests && ls -l target/
 
 # Expose Spring Boot port
 EXPOSE 8888
 
-# Run the app (works even if version changes)
+# Run the JAR (wildcard works even if version changes)
 CMD ["sh", "-c", "java -jar target/*.jar"]
