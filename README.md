@@ -114,7 +114,7 @@ Each backend service is deployed separately.
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/jsnmui/shoppingapp.git
+   git clone https://github.com/jsnmui/shopping.git
    cd shoppingapp/SpringSecurityAuth
    ```
 
@@ -184,7 +184,7 @@ Each backend service is deployed separately.
 **Frontend (Angular App)**
 
 **User/Admin Login Page:**
-https://shoppingapp-frontend-g8e2.onrender.com/login
+https://shoppingfront.netlify.app
 
 **Test Accounts**
 
