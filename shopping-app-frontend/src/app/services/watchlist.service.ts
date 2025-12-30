@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class WatchlistService {
-  private baseUrl = environment.contentApiUrl;
+  private baseUrl = `${environment.contentApiUrl}/watchlist`;
 
   constructor(private http: HttpClient) {}
 
