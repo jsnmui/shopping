@@ -123,7 +123,7 @@ Each backend service is deployed separately.
    **Linux / macOS (bash/zsh):**
 
    ```bash
-   export DB_URL=jdbc:mysql://localhost:3306/shopping_app
+   export DB_URL=jdbc:mysql://localhost:3306/shopping
    export DB_USERNAME=<your-db-username>
    export DB_PASSWORD=<your-db-password>
    export JWT_SECRET=<your-jwt-secret>
@@ -133,7 +133,7 @@ Each backend service is deployed separately.
    **Windows (Command Prompt):**
 
    ```cmd
-   set DB_URL=jdbc:mysql://localhost:3306/shopping_app
+   set DB_URL=jdbc:mysql://localhost:3306/shopping
    set DB_USERNAME=<your-db-username>
    set DB_PASSWORD=<your-db-password>
    set JWT_SECRET=<your-jwt-secret>
@@ -143,7 +143,7 @@ Each backend service is deployed separately.
    **Windows (PowerShell):**
 
    ```powershell
-   $env:DB_URL="jdbc:mysql://localhost:3306/shopping_app"
+   $env:DB_URL="jdbc:mysql://localhost:3306/shopping"
    $env:DB_USERNAME="<your-db-username>"
    $env:DB_PASSWORD="<your-db-password>"
    $env:JWT_SECRET="<your-jwt-secret>"
@@ -162,7 +162,7 @@ Each backend service is deployed separately.
 ### Angular Frontend
 
   ```bash
-  cd frontend/shopping-app
+  cd frontend/shopping
   npm install
   ng serve
   ```
