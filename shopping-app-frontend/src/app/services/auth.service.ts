@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CartService } from './cart.service';
+import { environment } from '../../environments/environment';
 
 interface LoginResponse {
   message: string;
@@ -14,7 +15,7 @@ interface LoginResponse {
 })
 export class AuthService {
 
-   private baseUrl = 'https://shoppingapp-auth.onrender.com';
+   private baseUrl = environment.authApiUrl;;
 
   constructor(private http: HttpClient, private router: Router, private cartService: CartService  ) {}
 

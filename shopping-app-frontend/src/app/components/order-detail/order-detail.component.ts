@@ -35,14 +35,7 @@ export class OrderDetailComponent implements OnInit {
   return this.order.items.reduce((sum, item) => sum + (item.quantity * item.purchasedPrice), 0);
   }
 
-  //  goBack(): void {
-  //   const role = this.authService.getUserRole();
-  //   if (role === 1) {
-  //     this.router.navigate(['/admin-home']);
-  //   } else {
-  //     this.router.navigate(['/user-home']);
-  //   }
-  // }
+  
 
   goBack(): void {
   const from = this.route.snapshot.queryParamMap.get('from');

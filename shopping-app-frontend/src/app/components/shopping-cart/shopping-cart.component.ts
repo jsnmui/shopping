@@ -4,6 +4,7 @@ import { Product } from '../product-detail/product.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CartItem } from './cart-item.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -62,7 +63,7 @@ export class ShoppingCartComponent implements OnInit {
     }))
   };
 
-  this.http.post('https://shoppingapp-content.onrender.com/orders', orderPayload).subscribe({
+  this.http.post(`${environment.contentApiUrl}/orders`, orderPayload).subscribe({
     next: (response: any) => {
       alert(response.message || 'Order placed successfully!');
       this.cartService.clearCart();

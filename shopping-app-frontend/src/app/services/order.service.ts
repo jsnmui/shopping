@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 import { Order } from '../components/user-home/order.model';
 import { OrderDetail } from '../components/order-detail/order-detail.model';
 import {ProductSummary} from '../components/product-summary/product-summary.model'
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-  private baseUrl = 'https://shoppingapp-content.onrender.com';
+  private baseUrl = environment.contentApiUrl;;
 
   constructor(private http: HttpClient) {}
 
