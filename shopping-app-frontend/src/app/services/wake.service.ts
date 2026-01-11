@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { forkJoin } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class WakeService {
+
+  private authUrl = environment.authApiUrl + '/health';
+  private contentUrl = environment.contentApiUrl + '/health';
+
+  constructor(private http: HttpClient) {}
+
+  wakeAll() {
+    return forkJoin([
+      this.http.get(this.authUrl),
+      this.http.get(this.contentUrl)
+    ]);
+  }
+}
